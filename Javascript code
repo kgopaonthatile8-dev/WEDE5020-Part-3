@@ -1,0 +1,47 @@
+// 2.1 Interactive Elements - Accordion
+document.querySelectorAll('.accordion').forEach(btn => {
+  btn.addEventListener('click', function(){
+    this.classList.toggle('active');
+    let panel = this.nextElementSibling;
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  });
+});
+ 
+// 2.1 Gallery Lightbox
+function openLightbox(src){
+  document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightbox-img').src=src;
+}
+ 
+// 2.1 Animation - fade in on scroll
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.fade').forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+});
+ 
+// 2.2 Dynamic Content - Load programs from JS array
+const programs = [
+  {name: "Digital Literacy", desc: "Basic computer skills for youth"},
+  {name: "CV Writing", desc: "CV and Interview Prep"},
+  {name: "Basic Coding", desc: "HTML, CSS, JavaScript"}
+];
+const list = document.getElementById('program-list');
+if(list){
+  programs.forEach(p => {
+    list.innerHTML += `<div class="program-card"><h3>${p.name}</h3><p>${p.desc}</p></div>`;
+  });
+}
+ 
+// 2.2 Search Filter
+function searchPrograms(){
+  let input = document.getElementById('searchBox').value.toLowerCase();
+  document.querySelectorAll('.program-card').forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+ 
+// 2.2 Leaflet Map is in contact.html

@@ -1,0 +1,24 @@
+<form id="enquiryForm">
+  <input type="text" id="name" required placeholder="Full Name" pattern="[A-Za-z ]{3,}">
+  <input type="email" required placeholder="Email">
+  <input type="tel" id="phone" required placeholder="0821234567" pattern="[0-9]{10}" title="10 digits">
+  <select id="enquiryType" required>
+    <option value="">Select enquiry type</option>
+    <option value="volunteer">Volunteer as Trainer</option>
+    <option value="sponsor">Sponsor Youth (R350 each)</option>
+    <option value="training">Book Training Slot</option>
+  </select>
+  <input type="number" id="numYouth" min="1" placeholder="Number of youth">
+  <div id="responseMessage"></div>
+  <button type="submit">Submit Enquiry</button>
+</form>
+<script>
+document.getElementById('enquiryForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  let type = document.getElementById('enquiryType').value;
+  let num = document.getElementById('numYouth').value || 1;
+  let cost = num * 350;
+  document.getElementById('responseMessage').innerHTML =
+  `Thank you! Your ${type} enquiry received. Cost estimate: R${cost}. Availability: Slots open for Jan 2027. We will email you.`;
+});
+</script>

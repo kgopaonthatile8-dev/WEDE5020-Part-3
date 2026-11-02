@@ -1,0 +1,21 @@
+<form id="contactForm" action="mailto:info@ubuntuyouth.org.za" method="post" enctype="text/plain">
+  <input type="text" required placeholder="Your Name">
+  <input type="email" required placeholder="Your Email">
+  <select required>
+    <option>General Enquiry</option>
+    <option>Partnership</option>
+    <option>Complaint</option>
+  </select>
+  <textarea id="fullMessage" required minlength="20" placeholder="Type full message..."></textarea>
+  <span id="error" style="color:red"></span>
+  <button type="submit">Send Message</button>
+</form>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  let msg = document.getElementById('fullMessage').value;
+  if(msg.length < 20){
+    document.getElementById('error').innerText = "Message must be at least 20 characters";
+    e.preventDefault();
+  }
+});
+</script>
